@@ -11,13 +11,15 @@ public class Game extends ApplicationAdapter {
 	Texture img;
 	
 	@Override
-	public void create () {
+	public void create() {
+        Loggers.graphics.info("OpenGL {}", Gdx.gl.glGetString(GL20.GL_VERSION));
+        Loggers.graphics.info("we're running on {} ({})", Gdx.gl.glGetString(GL20.GL_RENDERER), Gdx.gl.glGetString(GL20.GL_VENDOR));
 		batch = new SpriteBatch();
 		img = new Texture("badlogic.jpg");
 	}
 
 	@Override
-	public void render () {
+	public void render() {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.begin();
@@ -26,7 +28,7 @@ public class Game extends ApplicationAdapter {
 	}
 	
 	@Override
-	public void dispose () {
+	public void dispose() {
 		batch.dispose();
 		img.dispose();
 	}
