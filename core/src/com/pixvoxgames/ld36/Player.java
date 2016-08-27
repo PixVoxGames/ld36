@@ -19,7 +19,7 @@ public class Player {
     }
 
     public boolean pickupItem(Entity entity) {
-        if (!entity.isPickable()) {
+        if (!entity.isPickeable()) {
             return false;
         }
         int slot = findFreeSlot();

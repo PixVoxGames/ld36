@@ -6,5 +6,5 @@ public abstract class Entity {
     public abstract void onLookAt();
     public abstract String getHint();
 
-    public abstract boolean isPickable();
+    public abstract boolean isPickeable();
 }
