@@ -1,11 +1,10 @@
 apply plugin: "java"
 
-sourceCompatibility = 1.6
+sourceCompatibility = 1.7
 sourceSets.main.java.srcDirs = [ "src/" ]
-sourceSets.main.resources.srcDirs = [ "src/" ]
 
-project.ext.mainClassName = "com.pixvoxgames.ld36.desktop.DesktopLauncher"
-project.ext.assetsDir = new File("../android/assets");
+project.ext.mainClassName = "com.pixvoxsoftware.ld35.desktop.DesktopLauncher"
+project.ext.assetsDir = new File("../core/assets");
 
 task run(dependsOn: classes, type: JavaExec) {
     main = project.mainClassName
@@ -13,15 +12,9 @@ task run(dependsOn: classes, type: JavaExec) {
     standardInput = System.in
     workingDir = project.assetsDir
     ignoreExitValue = true
-    
-    if (project.hasProperty("appArgs") ) {  
-        args Eval.me(appArgs)  
-    }     
 }
 
 task dist(type: Jar) {
-    baseName =  appName + "-desktop"
-    
     from files(sourceSets.main.output.classesDir)
     from files(sourceSets.main.output.resourcesDir)
     from {configurations.compile.collect {zipTree(it)}}
@@ -37,7 +30,7 @@ dist.dependsOn classes
 eclipse {
     project {
         name = appName + "-desktop"
-        linkedResource name: 'assets', type: '2', location: 'PARENT-1-PROJECT_LOC/android/assets'
+        linkedResource name: 'assets', type: '2', location: 'PARENT-1-PROJECT_LOC/core/assets'
     }
 }
 

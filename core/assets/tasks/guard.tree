@@ -1,0 +1,22 @@
+#
+# Guard tree
+#
+
+# Alias definitions
+import home:"com.pixvoxsoftware.ld35.tasks.ReturnToSpawnTask"
+import stand:"com.pixvoxsoftware.ld35.tasks.StandTask"
+import walk:"com.pixvoxsoftware.ld35.tasks.WalkTask"
+import checkTask:"com.pixvoxsoftware.ld35.tasks.CheckTask"
+import murder:"com.pixvoxsoftware.ld35.tasks.MurderTask"
+
+# Tree definition (note that root is optional)
+root
+  dynamicGuardSelector
+    (checkTask) murder
+    sequence
+      home
+      walk positiveDirection:true
+      stand
+      home
+      walk positiveDirection:false
+      stand
